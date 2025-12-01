@@ -1,0 +1,92 @@
+/* Hero Slider Styling */
+.hero-slider .slick-track {
+  display: flex !important;
+}
+
+.hero-slider .slick-slide {
+  height: inherit !important;
+}
+
+.hero-slider .slick-slide > div {
+  height: 100%;
+}
+
+/* Style the slider dots */
+.hero-slider .slick-dots {
+  bottom: 20px;
+  text-align: center;
+  z-index: 10;
+}
+
+.hero-slider .slick-dots li {
+  margin: 0 4px;
+}
+
+/* Make the slider full-width */
+.hero-slider {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fade transition */
+.hero-slider .slick-slide {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hero-slider .slick-slide.slick-active {
+  opacity: 1;
+}
+
+/* Style the navigation arrows */
+.hero-slider .slick-arrow {
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-slider:hover .slick-arrow {
+  opacity: 1;
+}
+
+/* Caption styling */
+.hero-slider .banner-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.hero-slider .slick-active .banner-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Handle different screen sizes */
+@media (max-width: 768px) {
+  .hero-slider .slick-arrow {
+    display: none !important;
+  }
+  
+  .hero-slider .slick-dots {
+    bottom: 10px;
+  }
+  
+  .hero-slider .banner-caption h2 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-slider .banner-caption p {
+    font-size: 1rem;
+  }
+} 

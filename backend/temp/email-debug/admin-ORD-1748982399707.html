@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Order Notification</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .email-header {
+      background-color: #1a2456;
+      color: white;
+      padding: 24px;
+      text-align: center;
+    }
+    
+    .email-header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    
+    .notification-info {
+      padding: 24px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .highlight {
+      color: #1a2456;
+      font-weight: 600;
+    }
+    
+    .order-info {
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .order-info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .order-info-item:last-child {
+      border-bottom: none;
+    }
+    
+    .customer-details, .order-summary {
+      padding: 24px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    h2 {
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #333;
+    }
+    
+    .address-box {
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .order-items {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    
+    .order-items th {
+      text-align: left;
+      padding: 12px 8px;
+      background-color: #f2f2f2;
+      font-weight: 600;
+    }
+    
+    .order-items td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .price-summary {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .price-summary td {
+      padding: 8px 0;
+    }
+    
+    .price-summary .total-row {
+      font-weight: 600;
+      font-size: 16px;
+      border-top: 2px solid #eaeaea;
+      padding-top: 12px;
+    }
+    
+    .action-section {
+      padding: 24px;
+      border-bottom: 1px solid #eaeaea;
+      text-align: center;
+    }
+    
+    .action-button {
+      display: inline-block;
+      background-color: #1a2456;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    
+    .email-footer {
+      background-color: #f7f7f7;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+    }
+    
+    .urgent {
+      display: inline-block;
+      background-color: #e53e3e;
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 12px;
+      margin-left: 8px;
+      text-transform: uppercase;
+    }
+    
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <h1>New Order Received</h1>
+    </div>
+    
+    <div class="notification-info">
+      <p>A new order has been placed requiring your attention.</p>
+      <p>Order <span class="highlight">#ORD-1748982399707</span> was placed on <span class="highlight">June 3, 2025 at 10:27 PM</span>.</p>
+      
+      <div class="order-info">
+        <div class="order-info-item">
+          <strong>Order Number:</strong>
+          <span>ORD-1748982399707</span>
+        </div>
+        <div class="order-info-item">
+          <strong>Date:</strong>
+          <span>June 3, 2025 at 10:27 PM</span>
+        </div>
+        <div class="order-info-item">
+          <strong>Payment Method:</strong>
+          <span>Chipper Cash</span>
+        </div>
+        <div class="order-info-item">
+          <strong>Total Amount:</strong>
+          <span class="highlight">GH₵110.00</span>
+        </div>
+        <div class="order-info-item">
+          <strong>Current Status:</strong>
+          <span>Processing</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="customer-details">
+      <h2>Customer Details</h2>
+      
+      <div class="order-info-item">
+        <strong>Name:</strong>
+        <span>Customer</span>
+      </div>
+      <div class="order-info-item">
+        <strong>Email:</strong>
+        <span>stacysmith7014@gmail.com</span>
+      </div>
+      <div class="order-info-item">
+        <strong>Phone:</strong>
+        <span>+1 (555) 123-4567</span>
+      </div>
+      <div class="order-info-item">
+        <strong>Customer Type:</strong>
+        <span>Returning Customer</span>
+      </div>
+      
+      <h3>Shipping Address</h3>
+      <div class="address-box">
+        <strong>Customer</strong><br>
+        123 Example Street<br>
+        
+        TAMALE, north 00233<br>
+        Ghana<br>
+        Phone: +1 (555) 123-4567
+      </div>
+      
+      <div class="order-info-item">
+        <strong>Shipping Method:</strong>
+        <span>air</span>
+      </div>
+    </div>
+    
+    <div class="order-summary">
+      <h2>Order Items</h2>
+      
+      <table class="order-items">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>BLACK PANTS FAUXE LEATHER DETAILING MEN</strong><br>
+              <small>
+                
+                
+                
+                
+              </small>
+            </td>
+            <td>1</td>
+            <td>GH₵100</td>
+            <td>GH₵100.00</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <table class="price-summary">
+        <tr>
+          <td>Subtotal</td>
+          <td align="right">GH₵100.00</td>
+        </tr>
+        <tr>
+          <td>Shipping</td>
+          <td align="right">GH₵0.00</td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td align="right">GH₵10.00</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total</td>
+          <td align="right">GH₵110.00</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="action-section">
+      <h2>Action Required</h2>
+      <p>Please process this order as soon as possible.</p>
+      <a href="https://admin.sinosply.com/orders/683f5ab2e5bdbe98dfa3fea1" class="action-button">View Order Details</a>
+    </div>
+    
+    <div class="email-footer">
+      <p>This is an automated email. Please do not reply directly to this message.</p>
+      <p>&copy; 2025 Sinosply Admin System</p>
+    </div>
+  </div>
+</body>
+</html> 

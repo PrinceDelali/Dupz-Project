@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Preview Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        .preview-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .preview-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .preview-content {
+            padding: 15px;
+        }
+        .preview-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 5px;
+        }
+        .preview-description {
+            color: #666;
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+        .preview-url {
+            color: #999;
+            font-size: 12px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #333;
+        }
+        .note {
+            background-color: #fffde7;
+            padding: 15px;
+            border-left: 4px solid #ffd600;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Social Media Preview Test</h1>
+    
+    <div class="note">
+        <p>This tool helps you see what your product link will look like when shared on social media platforms.</p>
+        <p>Enter your product URL below to generate a preview. For local development, your URL should be accessible publicly (e.g., through a tunnel service like ngrok).</p>
+    </div>
+    
+    <div>
+        <label for="product-url">Product URL:</label>
+        <input type="text" id="product-url" placeholder="https://example.com/product/123" value="https://bunnyandwolf.vercel.app/product/682410ef6a32bc3e1a13dc6b">
+        <button onclick="fetchPreview()">Generate Preview</button>
+    </div>
+    
+    <div id="preview-container"></div>
+    
+    <div id="meta-data" style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+        <h2>Meta Tags Found</h2>
+        <pre id="meta-tags" style="background: #f5f5f5; padding: 15px; overflow: auto; font-size: 13px;"></pre>
+    </div>
+    
+    <script>
+        async function fetchPreview() {
+            const url = document.getElementById('product-url').value;
+            if (!url) return alert('Please enter a URL');
+            
+            document.getElementById('preview-container').innerHTML = `
+                <p style="text-align: center; margin: 30px 0;">
+                    <i>Loading preview...</i>
+                </p>
+            `;
+            
+            try {
+                // Use a CORS proxy to fetch the metadata
+                const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+                
+                const html = await response.text();
+                
+                // Create a DOM parser to extract meta tags
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // Get Open Graph data
+                const ogTitle = doc.querySelector('meta[property="og:title"]')?.content || doc.title;
+                const ogDescription = doc.querySelector('meta[property="og:description"]')?.content || '';
+                const ogImage = doc.querySelector('meta[property="og:image"]')?.content || '';
+                const ogUrl = doc.querySelector('meta[property="og:url"]')?.content || url;
+                
+                // Create preview card
+                document.getElementById('preview-container').innerHTML = `
+                    <h2>Preview:</h2>
+                    <div class="preview-card">
+                        <img class="preview-image" src="${ogImage}" alt="${ogTitle}" onerror="this.src='https://placehold.co/600x400?text=No+Image+Found'">
+                        <div class="preview-content">
+                            <p class="preview-title">${ogTitle}</p>
+                            <p class="preview-description">${ogDescription}</p>
+                            <p class="preview-url">${new URL(ogUrl).hostname}</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Display all meta tags found
+                const metaTags = Array.from(doc.querySelectorAll('meta')).map(tag => {
+                    const attrs = Array.from(tag.attributes).map(attr => `${attr.name}="${attr.value}"`).join(' ');
+                    return `<meta ${attrs}>`;
+                }).join('\n');
+                
+                document.getElementById('meta-tags').textContent = metaTags;
+                
+            } catch (error) {
+                document.getElementById('preview-container').innerHTML = `
+                    <div class="note" style="border-left-color: #f44336;">
+                        <p>Error: ${error.message}</p>
+                        <p>Note: This tool requires CORS access. You may need to request temporary access to the 
+                        <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">CORS Anywhere demo server</a> first.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Auto-fetch on page load
+        window.onload = () => {
+            fetchPreview();
+        };
+    </script>
+</body>
+</html> 

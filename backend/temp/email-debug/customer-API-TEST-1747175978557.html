@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .email-header {
+      background-color: #1a2456;
+      color: white;
+      padding: 24px;
+      text-align: center;
+    }
+    
+    .email-header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+    
+    .order-info {
+      padding: 24px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .order-number {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    
+    .thank-you {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .shipping-details, .order-summary {
+      padding: 24px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    h2 {
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #333;
+    }
+    
+    .address-box, .delivery-box {
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .delivery-method {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    .order-items {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    
+    .order-items th {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #eaeaea;
+      font-weight: 500;
+    }
+    
+    .order-items td {
+      padding: 12px 8px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    
+    .product-img {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid #eaeaea;
+    }
+    
+    .product-details {
+      padding-left: 12px;
+    }
+    
+    .product-name {
+      font-weight: 500;
+      margin: 0 0 4px 0;
+      font-size: 14px;
+    }
+    
+    .product-variant {
+      color: #666;
+      font-size: 12px;
+      margin: 0;
+    }
+    
+    .price-summary {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .price-summary td {
+      padding: 8px 0;
+    }
+    
+    .price-summary .total-row {
+      font-weight: 600;
+      font-size: 16px;
+      border-top: 2px solid #eaeaea;
+      padding-top: 12px;
+    }
+    
+    .tracking-section {
+      padding: 24px;
+      border-bottom: 1px solid #eaeaea;
+      text-align: center;
+    }
+    
+    .tracking-button {
+      display: inline-block;
+      background-color: #1a2456;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    
+    .help-section {
+      padding: 24px;
+      text-align: center;
+      color: #666;
+    }
+    
+    .help-button {
+      display: inline-block;
+      border: 1px solid #1a2456;
+      color: #1a2456;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    
+    .email-footer {
+      background-color: #f7f7f7;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+    }
+    
+    .social-links {
+      margin: 16px 0;
+    }
+    
+    .social-link {
+      display: inline-block;
+      margin: 0 8px;
+    }
+    
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        width: 100%;
+        border-radius: 0;
+      }
+      
+      .product-img {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <h1>Order Confirmation</h1>
+    </div>
+    
+    <div class="order-info">
+      <p class="order-number">Order #API-TEST-1747175978557</p>
+      <p class="thank-you">Thank you for your order, Test Customer!</p>
+      <p>We've received your order and are getting it ready to ship. We'll notify you when it's on its way!</p>
+    </div>
+    
+    <div class="shipping-details">
+      <h2>Shipping Details</h2>
+      <div class="address-box">
+        <strong>Test Customer</strong><br>
+        123 Test Street<br>
+        
+        Test City, Test State 12345<br>
+        Test Country<br>
+        Phone: 555-1234
+      </div>
+      
+      <div class="delivery-box">
+        <div class="delivery-method">
+          <strong>Shipping Method:</strong>
+          <span>Standard Shipping</span>
+        </div>
+        <div class="delivery-method">
+          <strong>Estimated Delivery:</strong>
+          <span>May 20, 2025</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      
+      <table class="order-items">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="display: flex; align-items: center;">
+              <img src="https://example.com/image.jpg" alt="Test Product" class="product-img">
+              <div class="product-details">
+                <p class="product-name">Test Product</p>
+                <p class="product-variant">
+                  Color: Black 
+                  Size: M
+                  
+                  
+                </p>
+              </div>
+            </td>
+            <td>2</td>
+            <td>GH₵19.99</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <table class="price-summary">
+        <tr>
+          <td>Subtotal</td>
+          <td align="right">GH₵39.98</td>
+        </tr>
+        <tr>
+          <td>Shipping</td>
+          <td align="right">GH₵5.99</td>
+        </tr>
+        <tr>
+          <td>Tax</td>
+          <td align="right">GH₵4.00</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total</td>
+          <td align="right">GH₵49.97</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="tracking-section">
+      <h2>Track Your Order</h2>
+      <p>Your tracking number: <strong>LG539183851XA</strong></p>
+      <a href="http://localhost:3000/track/LG539183851XA" class="tracking-button">Track Order</a>
+    </div>
+    
+    <div class="help-section">
+      <h2>Need Help?</h2>
+      <p>If you have any questions or concerns about your order, our customer support team is here to help.</p>
+      <a href="http://localhost:3000/contact" class="help-button">Contact Support</a>
+    </div>
+    
+    <div class="email-footer">
+      <p>&copy; 2025 Sinosply. All rights reserved.</p>
+      <p>Sinosply Inc., Accra, Ghana</p>
+      <div class="social-links">
+        <a href="#" class="social-link">Facebook</a>
+        <a href="#" class="social-link">Twitter</a>
+        <a href="#" class="social-link">Instagram</a>
+      </div>
+      <p>
+        <a href="http://localhost:3000/privacy-policy">Privacy Policy</a> | 
+        <a href="http://localhost:3000/terms-of-service">Terms of Service</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html> 

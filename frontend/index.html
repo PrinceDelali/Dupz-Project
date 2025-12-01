@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192.svg">
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/icons/icon-192.svg">
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/icons/icon-192.svg">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Sinosply - Connect to Premium Chinese Products</title>
+    <meta name="title" content="Sinosply - Connect to Premium Chinese Products">
+    <meta name="description" content="Discover premium products directly from trusted Chinese suppliers with Sinosply. Your reliable partner for business growth and global sourcing.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sinosply.com/">
+    <meta property="og:title" content="Sinosply - Connect to Premium Chinese Products">
+    <meta property="og:description" content="Discover premium products directly from trusted Chinese suppliers with Sinosply. Your reliable partner for business growth and global sourcing.">
+    <meta property="og:image" content="https://sinosply.com/og-image.jpg">
+    <meta property="og:site_name" content="Sinosply">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sinosply.com/">
+    <meta property="twitter:title" content="Sinosply - Connect to Premium Chinese Products">
+    <meta property="twitter:description" content="Discover premium products directly from trusted Chinese suppliers with Sinosply. Your reliable partner for business growth and global sourcing.">
+    <meta property="twitter:image" content="https://sinosply.com/twitter-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sinosply.com/" id="canonical-link">
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Robots and other SEO tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Sinosply">
+    <meta name="keywords" content="chinese products, global sourcing, import, export, wholesale, business supplies, china suppliers">
+    
+    <!-- Dynamic SEO tags that will be updated by JavaScript for specific pages -->
+    <script type="application/ld+json" id="structured-data">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Sinosply",
+        "url": "https://sinosply.com",
+        "logo": "https://sinosply.com/logo.png",
+        "description": "Connecting businesses with premium Chinese products and suppliers.",
+        "sameAs": [
+          "https://facebook.com/sinosply",
+          "https://instagram.com/sinosply",
+          "https://twitter.com/sinosply",
+          "https://linkedin.com/company/sinosply"
+        ]
+      }
+    </script>
+    
+    <!-- Pre-render helper for social media crawlers -->
+    <script>
+      // Detect if this is a bot/crawler
+      const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(navigator.userAgent);
+      
+      // Extract product ID from path if we're on a product page
+      const pathMatch = window.location.pathname.match(/\/product\/([a-f0-9]+)/i);
+      const productId = pathMatch ? pathMatch[1] : null;
+      
+      // If this is a bot and we're on a product page, fetch and set product metadata immediately
+      if (isBot && productId) {
+        fetch(`https://sinosply-backend.onrender.com/api/v1/seo/generate-metadata?type=product&id=${productId}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.success && data.metadata) {
+              const meta = data.metadata;
+              
+              // Update title and meta tags
+              document.title = meta.title;
+              
+              // Update meta description
+              const descTag = document.querySelector('meta[name="description"]');
+              if (descTag) descTag.setAttribute('content', meta.description);
+              
+              // Update OG tags
+              const ogTitleTag = document.querySelector('meta[property="og:title"]');
+              const ogDescTag = document.querySelector('meta[property="og:description"]');
+              const ogImageTag = document.querySelector('meta[property="og:image"]');
+              const ogTypeTag = document.querySelector('meta[property="og:type"]');
+              const ogUrlTag = document.querySelector('meta[property="og:url"]');
+              
+              if (ogTitleTag) ogTitleTag.setAttribute('content', meta.title);
+              if (ogDescTag) ogDescTag.setAttribute('content', meta.description);
+              if (ogImageTag) ogImageTag.setAttribute('content', 
+                Array.isArray(meta.image) ? meta.image[0] : meta.image);
+              if (ogTypeTag) ogTypeTag.setAttribute('content', 'product');
+              if (ogUrlTag) ogUrlTag.setAttribute('content', window.location.href);
+              
+              // Add product specific OG tags
+              if (meta.product) {
+                const head = document.head;
+                
+                // Price
+                const priceTag = document.createElement('meta');
+                priceTag.setAttribute('property', 'product:price:amount');
+                priceTag.setAttribute('content', meta.product.price);
+                head.appendChild(priceTag);
+                
+                const currencyTag = document.createElement('meta');
+                currencyTag.setAttribute('property', 'product:price:currency');
+                currencyTag.setAttribute('content', 'GHS');
+                head.appendChild(currencyTag);
+                
+                // Availability
+                const availabilityTag = document.createElement('meta');
+                availabilityTag.setAttribute('property', 'product:availability');
+                availabilityTag.setAttribute('content', meta.product.inStock ? 'in stock' : 'out of stock');
+                head.appendChild(availabilityTag);
+              }
+              
+              // Update Twitter tags
+              const twitterTitleTag = document.querySelector('meta[name="twitter:title"]');
+              const twitterDescTag = document.querySelector('meta[name="twitter:description"]');
+              const twitterImageTag = document.querySelector('meta[name="twitter:image"]');
+              
+              if (twitterTitleTag) twitterTitleTag.setAttribute('content', meta.title);
+              if (twitterDescTag) twitterDescTag.setAttribute('content', meta.description);
+              if (twitterImageTag) twitterImageTag.setAttribute('content', 
+                Array.isArray(meta.image) ? meta.image[0] : meta.image);
+            }
+          })
+          .catch(error => console.error('Error fetching product metadata:', error));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

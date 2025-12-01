@@ -1,0 +1,33 @@
+The structure issue in ProductDetailsPage.jsx is around line 1360.
+
+To fix the issue:
+
+1. Check the JSX element nesting structure in the Reviews section (activeTab === 'reviews')
+2. Make sure the proper closing tags are in the right order
+3. Ensure all JSX is properly balanced
+
+The problematic area is around these lines:
+```jsx
+              )}
+            </div>
+          </div>
+        </div>
+```
+
+The correct structure should be:
+```jsx
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+```
+
+Since the error is "Adjacent JSX elements must be wrapped in an enclosing tag", there's likely a missing fragment or enclosing tag in this area.
+
+Steps to fix:
+1. Find this closing structure in the file
+2. Re-check the nesting of divs in the reviews section
+3. Make sure all JSX elements are properly closed in the right order
+4. Check for any extra or missing closing div tags 

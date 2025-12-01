@@ -1,0 +1,42 @@
+.slick-prev,
+.slick-next {
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.slick-prev {
+  left: -20px;
+}
+
+.slick-next {
+  right: -20px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background: white !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #333;
+  font-size: 24px;
+}
+
+.slick-track {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.slick-slide {
+  padding: 0 10px;
+}
+
+/* Ensure carousel items don't get squished */
+.slick-slide > div {
+  height: 100%;
+}

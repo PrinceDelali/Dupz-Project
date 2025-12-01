@@ -1,0 +1,138 @@
+/* Banner Overlay Styles */
+
+.banner-overlay {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30 !important;
+  pointer-events: auto !important;
+}
+
+/* Add text shadow for better readability */
+.banner-overlay h2,
+.banner-overlay p {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Strong contrast for text colors */
+.banner-overlay .text-white {
+  color: white !important;
+}
+
+.banner-overlay .text-black {
+  color: black !important;
+}
+
+/* Enhanced button styles */
+.banner-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 35 !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  overflow: hidden !important;
+}
+
+/* Primary button style */
+.btn-primary {
+  background-color: black !important;
+  color: white !important;
+  border: 2px solid black !important;
+}
+
+.btn-primary:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Secondary button style */
+.btn-secondary {
+  background-color: white !important;
+  color: black !important;
+  border: 2px solid black !important;
+}
+
+.btn-secondary:hover {
+  background-color: black !important;
+  color: white !important;
+}
+
+/* Outlined button style */
+.btn-outlined {
+  background-color: transparent !important;
+  color: white !important;
+  border: 2px solid white !important;
+}
+
+.btn-outlined:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Minimal button style */
+.btn-minimal {
+  background-color: transparent !important;
+  color: white !important;
+  border-bottom: 2px solid white !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.btn-minimal:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Overlay background with different opacities */
+.overlay-dark {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.overlay-light {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.overlay-gradient {
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7)) !important;
+}
+
+/* Make sure the overlay container is clickable */
+.banner-overlay a {
+  pointer-events: auto !important;
+}
+
+/* Fix z-index for slider controls to appear above content */
+.slick-arrow {
+  z-index: 40 !important;
+}
+
+.slick-dots {
+  z-index: 40 !important;
+  position: relative !important;
+}
+
+/* Fix for button text and arrow */
+.banner-btn svg {
+  margin-left: 0.5rem !important;
+}
+
+/* Animation for button hover */
+.banner-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.banner-btn:hover:before {
+  left: 0;
+} 
