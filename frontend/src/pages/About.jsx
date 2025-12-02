@@ -102,7 +102,7 @@ const About = () => {
             animate="visible"
             className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
-            About Sinosply
+            About Dupz-Storees
           </motion.h1>
           <motion.p
             variants={fadeIn}
@@ -129,7 +129,7 @@ const About = () => {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Who We Are</h2>
               <div className="w-24 h-1 bg-red-600 mb-6"></div>
               <p className="text-gray-600 mb-6">
-                At Sinosply, we believe great products deserve the shortest path from factory floor to front door.
+                At Dupz-Stores, we believe great products deserve the shortest path from factory floor to front door.
               </p>
               <p className="text-gray-600 mb-6">
                 A team of sourcing specialists with deep roots in China's manufacturing hubs, we've helped startups, e‑commerce brands, 
@@ -151,7 +151,7 @@ const About = () => {
             >
               <div className="absolute inset-0 bg-black/5 rounded-lg transform rotate-3"></div>
               <img 
-                src="/team/benjie.jpg" 
+                src="https://www.globalr2p.org/wp-content/uploads/2025/08/China_-August-2025.png" 
                 alt="Founder" 
                 className="relative z-10 rounded-lg shadow-lg object-cover w-full h-full"
               />

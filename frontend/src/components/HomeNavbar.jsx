@@ -190,7 +190,7 @@ const HomeNavbar = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <span className={`text-2xl font-bold ${isScrolled ? 'text-red-600' : 'text-white'}`}>
-                Sinosply
+                Dupz-Stores
               </span>
               {/* <span className={`ml-1 text-sm font-medium ${isScrolled ? 'text-gray-600' : 'text-white/80'}`}>
                 Connect
